@@ -1,0 +1,15 @@
+import bobcatModule
+
+
+msg = (0x5920,0xc7cc,0x6234,0xb111,0x3090,0x8ab7,0xf373,0x46dd)
+
+IV = (0xface, 0xe961, 0x041d) 
+
+
+print(bobcatModule.bobcatIV(IV, msg))
+
+
+x = bobcatModule.bobcatIV(IV, msg)
+
+
+
