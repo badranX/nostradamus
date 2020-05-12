@@ -1,33 +1,34 @@
 import sqlite3
 #connect to database table 
-db = sqlite3.connect('test.db')
+def init_db():
+    db = sqlite3.connect('test.db')
 
-cursor = db.cursor()
+    global cursor = db.cursor()
 
-db.execute("DROP TABLE IF EXISTS Hashes")
-db.execute("DROP TABLE IF EXISTS Collisions")
-db.execute("DROP TABLE IF EXISTS Vertex")
-db.commit()
-
-try:
-    db.execute("CREATE TABLE Hashes(HASH_VAL TEXT PRIMARY KEY NOT NULL, MSG TEXT NOT NULL, fk_TAG INTEGER NOT NULL);")
+    db.execute("DROP TABLE IF EXISTS Hashes")
+    db.execute("DROP TABLE IF EXISTS Collisions")
+    db.execute("DROP TABLE IF EXISTS Vertex")
     db.commit()
-except sqlite3.OperationalError:
-    print("Table Coudn't be created")
+
+    try:
+        db.execute("CREATE TABLE Hashes(HASH_VAL TEXT PRIMARY KEY NOT NULL, MSG TEXT NOT NULL, fk_TAG INTEGER NOT NULL);")
+        db.commit()
+    except sqlite3.OperationalError:
+        print("Table Coudn't be created")
 
 
-try:
-    db.execute("CREATE TABLE Collisions(MSG TEXT NOT NULL, fk_HASH_VAL TEXT NOT NULL, fk_TAG INTEGER NOT NULL);")
-    db.commit()
-except sqlite3.OperationalError:
-    print("Table Coudn't be created")
+    try:
+        db.execute("CREATE TABLE Collisions(MSG TEXT NOT NULL, fk_HASH_VAL TEXT NOT NULL, fk_TAG INTEGER NOT NULL);")
+        db.commit()
+    except sqlite3.OperationalError:
+        print("Table Coudn't be created")
 
 
-try:
-    db.execute("CREATE TABLE Vertex(TAG INTEGER PRIMARY KEY NOT NULL, IV TEXT NOT NULL);")
-    db.commit()
-except sqlite3.OperationalError:
-    print("Table Coudn't be created")
+    try:
+        db.execute("CREATE TABLE Vertex(TAG INTEGER PRIMARY KEY NOT NULL, IV TEXT NOT NULL);")
+        db.commit()
+    except sqlite3.OperationalError:
+        print("Table Coudn't be created")
 
 
 

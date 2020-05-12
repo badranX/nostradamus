@@ -124,8 +124,7 @@ def generate_graph_datastructure(height):
 
 
 #msgs is the first leaves of messages
-def generate_onelevel(IV, msgs, guess_max_len, attempts_per_line):
-    hashes = map(lambda x: hash(IV, x), msgs)
+def generate_onelevel(hashes, guess_max_len, attempts_per_line):
     for i, hash_val in enumerate(hashes):
         guesses_per_line(hash_val, i, guess_max_len, attempts_per_line)
         print("------------------\n")
@@ -137,7 +136,24 @@ def load_msgs_from_file(file_name):
         return list(f) 
 
 
+
+generate_diamond(IV, msgs, guess_max_len, attempts_per_line):
+    init_db()
+    graph = generate_graph_datastructure(len(msg))
+    level[0] = msgs
+    for level in graph:
+        is_level_incomplete=False
+        while(is_level_incomplete):
+            hashes = map(lambda x: hash(IV, x), msgs)
+            generate_one_level(hashes, guess_max_len, attempts_per_line)
+            collisions = get_found_collisions()
+            for c in collisions:  
+                int(c[0]) 
+
+                ###I'm done no more work on this
+            
 ###TESTING
+init_db()
 IV = convert_hash2str((0xface, 0xe961, 0x041d))
 #m = load_msgs_from_file("msgs.txt")
 #generate_onelevel(IV, m,16*4, 1000)
