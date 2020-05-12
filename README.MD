@@ -9,7 +9,7 @@ The following tasks are done:
  2-Collisiong detection functionality.
 
 
- 3- Constructing one Diamond Structure from the previous one.
+ 3- Constructing one diamond structure level from the previous one.
 
 
  
